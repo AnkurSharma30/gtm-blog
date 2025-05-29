@@ -1,51 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - My Blog</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PLVLNDKJ');
-  </script>
-  <!-- End Google Tag Manager -->
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLVLNDKJ"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+<h2>Subscribe to our Newsletter</h2>
+<form id="subscribe-form">
+  <input type="email" id="email-input" placeholder="Enter your email" required />
+  <button type="submit" id="subscribe-button">Subscribe</button>
+</form>
 
-  <header>
-    <h1>Welcome to My Blog</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-    </nav>
-  </header>
-
-  <div class="container">
-    <h2>Sample Blog Post</h2>
-    <p>This is a sample blog post to demonstrate a simple and elegant layout using HTML and CSS. You can write about your thoughts, experiences, or updates here.</p>
-
-    <h3>Subscribe to My Newsletter</h3>
-    <p>Enter your email to get blog updates.</p>
-    <button id="subscribe-button">Subscribe</button>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 My Blog</p>
-  </footer>
-
-  <script>
-    document.getElementById("subscribe-button").addEventListener("click", function() {
-      dataLayer.push({ event: "newsletter_subscribe", label: "Subscribe Button Clicked" });
-    });
-  </script>
-</body>
-</html>
+<script>
+  document.getElementById("subscribe-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const email = document.getElementById("email-input").value;
+    if (email && email.includes("@")) {
+      // Optional: push to GTM
+      dataLayer.push({ event: "newsletter_subscribe", email: email });
+      // Redirect to thank you page
+      window.location.href = "thankyou.html";
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  });
+</script>
